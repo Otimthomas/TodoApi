@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_restful import Api
 
-from resource.todoResource import TodoResource
+from resource.todoResource import TodoResource, Todos
 
 app = Flask(__name__)
 api = Api(app)
@@ -15,6 +15,7 @@ def create_table():
     db.create_all()
 
 api.add_resource(TodoResource, '/todo/<string:todo>')
+api.add_resource(Todos, '/todos')
 
 if __name__ == '__main__':
     from db import db

@@ -35,3 +35,8 @@ class TodoResource(Resource):
             task.delete_from_db()
             return {'message': 'Task Deleted'}
         return {'message': 'Task was not found'}
+
+
+class Todos(Resource):
+    def get(self):
+        return {'TODOS': [todo.json() for todo in TodoModel.query.all()]}
